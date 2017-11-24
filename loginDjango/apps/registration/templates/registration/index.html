@@ -1,0 +1,57 @@
+<!doctype html>
+
+ <html lang="en"> 
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <title>Registration Form</title>
+    </head>
+
+    <body>
+        <div class="container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <font color="red"><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></font>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <h2>Login</h2>
+        <form action='/login' method= 'post'>
+           <font color="red"> {% csrf_token %}</font>
+            Email: <input type='text' name="email">
+            Password: <input type='text' name='password'>
+            <input type='submit' value='Login' class="btn-sm">
+        </form>
+        <br>
+        <h2>Register</h2>
+        <form action='/registration' method= 'post' class="form-horizontal">
+            <font color="red">{% csrf_token %}</font>
+            <div class="group-form">
+                First Name: <input type='text' name='first_name'>
+            </div>
+            <br>
+            <div class="group-form">
+                Last Name: <input type='text' name="last_name">
+            </div>
+            <br>
+            <div class="group-form">
+                Email: <input type='text' name="email">
+            </div>
+            <br>
+            <div class="group-form">
+                Password: <input type='text' name="password">
+            </div>
+            <br>
+            <div class="group-form">
+                Confirm Password: <input type='text' name="confirm_password">
+            </div>
+            <br>
+            <div class="group-form">
+                <input type='submit' value='Create User' class="btn-sm">
+            </div>
+        </form>
+        </div>
+    </body>
+</html>
