@@ -1,0 +1,26 @@
+<!doctype html>
+
+ <html lang="en"> 
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <title>Results Form</title>
+    </head>
+
+    <body>
+        <div class="col-sm-10">
+            <h1>Submitted Info</h1>
+            <font color="green">
+                <p> You have submitted this form {{request.session.count}} times</p>
+            </font>
+            <p>Name: {{ request.session.name }}</p>
+            <p>Location: {{ request.session.location }}</p>
+            <p>Language: {{ request.session.language }}</p>
+            <p>Comments: {{ request.session.comments }}</p>
+            <form action="/">
+                <button class="btn btn-sm"> Go Back </button>
+            </form>
+        </div>
+    </body>
+</html>

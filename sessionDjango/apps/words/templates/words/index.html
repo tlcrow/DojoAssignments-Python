@@ -1,0 +1,72 @@
+<html lang="en"> 
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <title>Process Form</title>
+    <style>
+        .big{
+            font-size: 20px;
+        }
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+        .blue{
+            color: blue;
+        }
+
+    </style>    
+    </head>
+
+    <body>
+        <div class="text-center">
+            <h1>Add a new word</h1>
+        </div>
+        <form action='/process' method= 'post' class="form-horizontal">
+            <div class="text-center">
+                <font color="red">
+                    {% csrf_token %}
+                </font>
+            </div>
+            <div class="text-center">
+                <h6>Type Word or Phrase:</h6>
+                <input type='text' name='word'>
+            </div>
+            <br>
+            <div class="text-center">
+                <h6>Choose Color:</h6>
+                    Red <input type="radio" name="color" value="red">
+                    Green <input type="radio" name="color" value="green">
+                    Blue <input type="radio" name="color" value="blue">
+            </div>
+            <br>
+            <div class="text-center">
+                <h6>Use a big font?</h6>
+                <input type='checkbox' name="big">
+            </div>
+            <br>
+            <div class="text-center">
+                <input type='submit' value='Add Text' class="btn-success btn-sm">
+            </div>
+        </form>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <form action='/clear' method= 'post'>
+                {% csrf_token %}
+                <input type='submit' value='Clear Session' class="btn-danger btn-sm">
+                </form>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                {% for word in request.session.stored_words%}
+                <p><span class="{{word.size}} {{word.color}}">{{word.word}} - {{word.time}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
