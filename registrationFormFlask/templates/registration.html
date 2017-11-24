@@ -1,0 +1,61 @@
+<!doctype html>
+
+ <html lang="en"> 
+    <head>
+    <meta charset="utf-8">
+    <href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <title>Registration Form</title>
+    </head>
+
+    <body>
+        <div class="form-group">
+            <h1>Registration</h1>
+            <font color="red">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </font>
+        <form action='/results' method= 'post'class="form-horizontal">
+            <div class"form-group">
+                <div class="col-sm-10">
+                    First Name: <input type='text' name='First_Name'>
+                </div>
+            </div>
+            <br>
+            <div class"form-group">
+                <div class="col-sm-10">
+                    Last Name: <input type='text' name="Last_Name">
+                </div>
+            </div>
+            <br>
+            <div class"form-group">
+                <div class="col-sm-10">
+                    Email: <input type='text' name="Email">
+                </div>
+            </div>
+            <br>
+            <div class"form-group">
+                <div class="col-sm-10">
+                    Password: <input type='text' name="Password">
+                </div>
+            </div>
+            <br>
+            <div class"form-group">
+                <div class="col-sm-10">
+                    Confirm Password: <input type='text' name="Confirm_Password">
+                </div>
+            </div>
+            <br>
+            <div class"form-group">
+                <div class="col-sm-10">
+                    <input type='submit' value='Create User'>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
